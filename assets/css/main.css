@@ -99,8 +99,7 @@ button a{
 
 /* кружок со стрелкой — общий знак «перейти» */
 .main-container article a::after,
-.services-container li:first-child a::after,
-.numbers-container ul:last-child > li a::after{
+.services-container li:first-child a::after{
     content: "";
     display: inline-block;
     flex: none;
@@ -362,120 +361,187 @@ main section{
     color: var(--deep);
 }
 
-/* ---------- Размещение: карточки-арки ---------- */
+/* ---------- Размещение: каталог ---------- */
 .numbers-container{
     display: grid;
-    gap: 28px;
+    gap: 20px;
 }
 .numbers-container h2{
     margin-bottom: 0;
 }
-.numbers-container ul{
+
+/* панель фильтров */
+.filters{
+    display: grid;
+    gap: 14px;
+    padding: 16px;
+    background: var(--white);
+    border: var(--stroke) solid var(--deep);
+    border-radius: var(--r-card);
+}
+.chips{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.chip{
+    min-height: 44px;
+    padding: 0 20px;
+    color: var(--deep);
+    background: transparent;
+    border-color: var(--deep);
+}
+.chip.is-on{
+    color: var(--white);
+    background: var(--deep);
+}
+.filters label{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    align-content: flex-start;
+    gap: 8px 12px;
+    font-size: 14px;
+    color: var(--muted);
+}
+.filters select{
+    flex: 1 1 200px;
+    min-height: 44px;
+    padding: 0 16px;
+    font: inherit;
+    font-size: 16px;                  /* 16px — чтобы iOS не зумил поле */
+    color: var(--deep);
+    background: var(--white);
+    border: var(--stroke) solid var(--deep);
+    border-radius: 14px;
+}
+.found{
+    font-size: 14px;
+    color: var(--muted);
+}
+.found b{
+    font-family: var(--display);
+    color: var(--deep);
+}
+
+/* сетка и карточка отеля */
+.hotel-grid{
+    display: grid;
+    gap: 28px;
+}
+.hotel{
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
-    padding-bottom: 26px;
     background: var(--white);
     border: var(--stroke) solid var(--deep);
     border-radius: var(--arch);
-    transition: transform .25s var(--ease), background-color .25s var(--ease);
+    transition: transform .25s var(--ease);
 }
-.numbers-container ul > img:first-child{
-    order: 0;
+.hotel[hidden]{
+    display: none;
+}
+.hotel__photo{
     width: 100%;
     aspect-ratio: 4 / 5;
     object-fit: cover;
-    margin-bottom: 20px;
     transition: transform .6s var(--ease);
 }
-.numbers-container ul > li{
-    flex-basis: 100%;
-    padding: 0 22px;
+.hotel__body{
+    display: grid;
+    gap: 10px;
+    padding: 20px 22px 24px;
 }
-.numbers-container ul > li:nth-of-type(2){   /* название */
-    order: 1;
+.hotel__chips{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.hotel__chips li{
+    padding: 3px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--deep);
+    background: var(--foam);
+    border-radius: var(--r-pill);
+}
+.hotel__chips li:first-child{
+    background: var(--sun);
+}
+.hotel h3{
+    margin: 0;
     font-family: var(--display);
     font-size: 20px;
     font-weight: 600;
     line-height: 1.15;
     letter-spacing: -.01em;
+    overflow-wrap: break-word;
 }
-.numbers-container ul > li:nth-of-type(3){   /* город */
-    order: 2;
-    margin-top: 4px;
+.hotel__price{
     font-size: 14px;
     color: var(--muted);
 }
-.numbers-container ul > li:nth-of-type(1){   /* цена */
-    order: 3;
-    margin: 16px 0 18px;
-    font-size: 14px;
-    color: var(--muted);
-}
-.numbers-container ul > li:nth-of-type(1) strong{
-    margin: 0 5px;
+.hotel__price strong{
+    margin: 0 4px;
     font-family: var(--display);
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 600;
     letter-spacing: -.02em;
     color: var(--deep);
 }
-.numbers-container ul > button{
-    order: 4;
-    margin-left: 22px;
-    margin-right: auto;
-    padding-inline: 24px;
+.hotel__price strong:first-child{
+    margin-left: 0;
+}
+.hotel__foot{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 6px;
+}
+.hotel__foot button{
     color: var(--white);
     background: var(--deep);
     border-color: var(--deep);
 }
-.numbers-container ul > img:not(:first-child){   /* звёзды рейтинга */
-    order: 5;
+.hotel__stars{
+    display: flex;
+    gap: 3px;
+}
+.hotel__stars img{
     width: 15px;
     height: 15px;
-    margin-left: 3px;
-}
-.numbers-container ul > img:nth-of-type(6){
-    margin-right: 22px;
 }
 
 /* последняя карточка — «Посмотреть все варианты» */
-.numbers-container ul:last-child{
+.promo{
     position: relative;
     isolation: isolate;
-    display: block;
+    display: flex;
+    align-items: flex-end;
     min-height: 380px;
-    padding: 0;
-    border-color: var(--deep);
+    padding: 26px 24px;
+    overflow: hidden;
+    border: var(--stroke) solid var(--deep);
+    border-radius: var(--arch);
+    transition: transform .25s var(--ease);
 }
-.numbers-container ul:last-child > img{
+.promo > img{
     position: absolute;
     inset: 0;
     z-index: -2;
     width: 100%;
     height: 100%;
-    margin: 0;
-    aspect-ratio: auto;
     object-fit: cover;
 }
-.numbers-container ul:last-child::before{
+.promo::before{
     content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
     background: linear-gradient(to top, rgba(11, 34, 55, .92), rgba(11, 34, 55, .1) 70%);
 }
-.numbers-container ul:last-child > li{
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 26px;
-    margin: 0;
-    padding: 0 24px;
-}
-.numbers-container ul:last-child > li a{
+.promo span{
     display: inline-flex;
     align-items: center;
     padding: 6px 6px 6px 24px;
@@ -485,12 +551,17 @@ main section{
     color: var(--deep);
     background: var(--sun);
     border-radius: var(--r-pill);
+    transition: background-color .2s var(--ease);
 }
-.numbers-container ul:last-child > li a::after{
+.promo span::after{
+    content: "";
+    flex: none;
     width: 40px;
     height: 40px;
     margin-left: 14px;
     background: var(--arrow-deep) center / 16px no-repeat, var(--white);
+    border-radius: 50%;
+    transition: transform .2s var(--ease);
 }
 
 /* ---------- Форма «Хочу тур» (когда раскомментируете) ---------- */
@@ -592,13 +663,25 @@ main section{
     main section{
         padding: 80px 0;
     }
-    .main-container,
-    .numbers-container{
+    .main-container{
         grid-template-columns: repeat(2, 1fr);
     }
-    .main-container h2,
-    .numbers-container h2{
+    .main-container h2{
         grid-column: 1 / -1;
+    }
+    .hotel-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .filters{
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        padding: 16px 20px;
+    }
+    .filters label{
+        justify-content: flex-end;
+    }
+    .filters select{
+        flex: 0 1 220px;
     }
     .main-container > article{
         grid-column: 1 / -1;
@@ -752,14 +835,14 @@ main section{
         font-size: 18px;
     }
 
-    .numbers-container{
+    .hotel-grid{
         grid-template-columns: repeat(3, 1fr);
         gap: 32px;
     }
-    .numbers-container ul:last-child{
+    .promo{
         min-height: 0;
     }
-    .numbers-container ul > li:nth-of-type(2){
+    .hotel h3{
         font-size: 22px;
     }
 
@@ -795,10 +878,14 @@ main section{
         background: var(--white);
         border-color: var(--white);
     }
-    .numbers-container ul > button:hover{
+    .hotel__foot button:hover{
         color: var(--deep);
         background: var(--sun);
         border-color: var(--sun);
+    }
+    .chip:not(.is-on):hover{
+        color: var(--white);
+        background: var(--deep);
     }
     .header-container nav li a:hover,
     .header-container > a:hover{
@@ -809,19 +896,20 @@ main section{
     }
     .main-container article a:hover::after,
     .services-container li:first-child a:hover::after,
-    .numbers-container ul:last-child > li a:hover::after{
+    .promo:hover span::after{
         transform: translateX(5px);
     }
     .services-container ul:hover li:first-child{
         color: var(--lagoon);
     }
-    .numbers-container ul:hover{
+    .hotel:hover,
+    .promo:hover{
         transform: translateY(-6px);
     }
-    .numbers-container ul:hover > img:first-child{
+    .hotel:hover .hotel__photo{
         transform: scale(1.05);
     }
-    .numbers-container ul:last-child > li a:hover{
+    .promo:hover span{
         background: var(--white);
     }
     .contacts-container a:hover{
@@ -856,12 +944,13 @@ main section{
         animation: none !important;
         scroll-behavior: auto !important;
     }
-    .numbers-container ul,
-    .numbers-container ul > img:first-child,
+    .hotel,
+    .promo,
+    .hotel__photo,
     .main-container article p,
     .main-container article a::after,
     .services-container li:first-child a::after,
-    .numbers-container ul:last-child > li a::after{
+    .promo span::after{
         transition: none !important;
         transform: none !important;
     }
