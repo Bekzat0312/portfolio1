@@ -64,8 +64,9 @@ code{ font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-siz
 /* ---------- Обложка ---------- */
 .bb-cover{
     position: relative;
+    isolation: isolate;
     overflow: clip;
-    padding: 64px 0 160px;
+    padding: 64px 0 180px;
     color: var(--deep);
     background: var(--sun);
 }
@@ -85,10 +86,11 @@ code{ font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-siz
 }
 .bb-cover__sun{
     position: absolute;
-    right: -90px;
-    bottom: -170px;
-    width: 340px;
-    height: 340px;
+    z-index: -1;
+    right: -50px;
+    bottom: -140px;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
     background:
         radial-gradient(circle, var(--deep) 0 38%, transparent 38.5%),
@@ -452,10 +454,10 @@ code{ font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-siz
 /* ≥ 720 */
 @media (min-width: 720px){
     .bb-wrap{ padding-inline: 36px; }
-    .bb-cover{ padding: 96px 0 220px; }
+    .bb-cover{ padding: 96px 0 320px; }
     .bb-cover h1{ font-size: 72px; }
     .bb-cover p{ font-size: 22px; }
-    .bb-cover__sun{ width: 560px; height: 560px; right: 4%; bottom: -290px; }
+    .bb-cover__sun{ width: 480px; height: 480px; right: 4%; bottom: -240px; }
     .bb-section{ padding: 96px 0; }
     .bb-section h2{ font-size: 38px; }
     .bb-lead{ font-size: 22px; }
