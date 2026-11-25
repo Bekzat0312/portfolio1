@@ -153,13 +153,8 @@ button a{
     flex-basis: 100%;
     min-width: 0;
     display: flex;
-    gap: 0 24px;
-    overflow-x: auto;                 /* меню скроллится само, а не страница */
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-}
-.header-container nav ul::-webkit-scrollbar{
-    display: none;
+    flex-wrap: wrap;                  /* ссылки переносятся, никаких скроллов */
+    gap: 0 22px;
 }
 .header-container nav li a{
     display: block;
