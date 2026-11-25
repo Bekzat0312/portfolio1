@@ -105,7 +105,7 @@ h3{
 }
 h2{
     margin-bottom: 28px;
-    font-size: 28px;
+    font-size: clamp(23px, 7.4vw, 28px);   /* на 320 px длинные слова не рвутся */
     line-height: 1.1;
 }
 
@@ -315,7 +315,7 @@ html.menu-open{
 }
 .hero h1{
     margin-bottom: 18px;
-    font-size: 38px;
+    font-size: clamp(32px, 10vw, 38px);
     line-height: 1.02;
     letter-spacing: -.03em;
 }
