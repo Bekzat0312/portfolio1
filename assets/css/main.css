@@ -1,0 +1,828 @@
+/* ==========================================================================
+   Lagoona — main.css
+   Mobile first. Подключается ПОСЛЕ normalize.css и style.css.
+
+   Направление
+   · Мир: солнце над водой, латунь и тёмное дерево отеля (логотип — золотое солнце).
+   · Характер: тёплый, спокойный, уверенный.
+   · Нейтрали: лён и эспрессо. Один акцент — золото логотипа.
+   · Яркие моменты — фотографии. Всё остальное тихое.
+   · Подпись: «солнце на горизонте» — золотая точка и линия над заголовками.
+   ========================================================================== */
+
+:root{
+    --espresso:  #1c1712;   /* шапка и тёмные блоки */
+    --espresso-2:#2a231b;
+    --linen:     #f2f4f1;   /* фон страницы: светлый камень */
+    --paper:     #ffffff;   /* карточки */
+    --ink:       #241d15;   /* основной текст */
+    --muted:     #5d625d;   /* второстепенный текст, ≥4.5:1 на фоне */
+    --line:      #dcdfd8;   /* тонкие линии на светлом */
+    --line-d:    rgba(246, 241, 232, .14);   /* тонкие линии на тёмном */
+    --on-dark:   #e9e2d3;   /* текст на тёмном */
+    --on-dark-2: #b9ad9b;   /* второстепенный текст на тёмном */
+    --gold:      #e8b658;   /* цвет логотипа: кнопки и акценты на тёмном */
+    --gold-l:    #f1cd88;
+    --bronze:    #8a5a12;   /* золото для текста на светлом, ≥4.5:1 */
+
+    --r-ctl:  10px;         /* кнопки и поля */
+    --r-card: 16px;         /* карточки */
+
+    --serif: 'Cormorant Garamond', 'Playfair Display', ui-serif, Georgia, 'Times New Roman', serif;
+    --sans:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+    --ease:  cubic-bezier(.23, 1, .32, 1);   /* сильный ease-out */
+
+    /* стрелка рисуется маской, а не символом */
+    --arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8h10M9 4l4 4-4 4'/%3E%3C/svg%3E");
+}
+
+/* ---------- База ---------- */
+html{
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    scrollbar-color: #a9ada6 var(--linen);
+    accent-color: var(--bronze);
+}
+body{
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--linen);
+    caret-color: var(--bronze);
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+}
+/* style.css задаёт img{min-width:100%} — сбрасываем, иначе ломаются логотип и звёзды */
+img{
+    min-width: 0;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+p{
+    margin: 0;
+}
+a{
+    text-underline-offset: .25em;
+    transition: color .2s var(--ease), background-color .2s var(--ease), border-color .2s var(--ease);
+}
+::selection{
+    background: var(--gold);
+    color: var(--espresso);
+}
+:focus-visible{
+    outline: 2px solid var(--bronze);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.container{
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: 20px;
+}
+
+/* ---------- Заголовки ---------- */
+h2{
+    margin: 0 0 32px;
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1.05;
+    letter-spacing: -.01em;
+    color: var(--espresso);
+    text-wrap: balance;
+}
+/* подпись: солнце на горизонте */
+h2::before,
+.benefits > ul::before{
+    content: "";
+    display: block;
+    width: 72px;
+    height: 10px;
+    margin-bottom: 20px;
+    background:
+        radial-gradient(circle at 5px 5px, var(--gold) 4.5px, transparent 5px) left center / 10px 10px no-repeat,
+        linear-gradient(var(--bronze), var(--bronze)) 14px 5px / 58px 1px no-repeat;
+}
+
+/* ---------- Кнопки ---------- */
+button,
+input[type="submit"]{
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 48px;                 /* зона касания */
+    padding: 0 24px;
+    color: var(--espresso);
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: var(--r-ctl);
+    -webkit-appearance: none;
+    appearance: none;
+    transition: background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .16s var(--ease);
+}
+button:active,
+input[type="submit"]:active{
+    transform: scale(.97);
+}
+button a{
+    color: inherit;
+}
+
+/* ---------- Шапка (на всю ширину, эспрессо) ---------- */
+.header-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+    padding: 18px 0 0;
+    color: var(--on-dark);
+    background: var(--espresso);
+    box-shadow: 0 0 0 100vmax var(--espresso);
+    clip-path: inset(0 -100vmax);
+}
+.header-container > img{
+    width: 148px;
+    margin-right: auto;
+    border-radius: 6px;
+}
+.header-container > a{
+    font-size: 15px;
+    font-weight: 500;
+}
+.header-container > a[href^="tel"]{
+    color: #fff;
+    white-space: nowrap;
+}
+.header-container > a[href=""]{
+    color: var(--gold);
+}
+.header-container nav{
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 4px 0 18px;
+    border-top: 1px solid var(--line-d);
+}
+.header-container nav ul{
+    flex-basis: 100%;
+    display: flex;
+    gap: 0 26px;
+    overflow-x: auto;                 /* меню скроллится, если не влезает */
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+.header-container nav ul::-webkit-scrollbar{
+    display: none;
+}
+.header-container nav li a{
+    display: block;
+    padding: 12px 0;
+    white-space: nowrap;
+    font-size: 15px;
+    color: var(--on-dark);
+}
+.header-container nav button{
+    flex: 1 1 150px;
+    padding-inline: 16px;
+}
+.header-container nav button:last-child{
+    color: var(--on-dark);
+    background: transparent;
+    border-color: rgba(246, 241, 232, .35);
+}
+
+main section{
+    padding: 56px 0;
+}
+
+/* ---------- Спецпредложения: три фотографии ---------- */
+.main-container{
+    display: grid;
+    gap: 14px;
+}
+.main-container h2{
+    margin-bottom: 12px;
+}
+.first-second-block{
+    display: contents;                /* карточки становятся прямыми детьми сетки */
+}
+.main-container article{
+    --photo: none;
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 4px;
+    min-height: 340px;
+    padding: 28px 26px 26px;
+    overflow: hidden;
+    color: #fff;
+    background:
+        linear-gradient(to top, rgba(28, 23, 18, .9) 0%, rgba(28, 23, 18, .45) 48%, rgba(28, 23, 18, .08) 100%),
+        var(--photo) center / cover no-repeat,
+        var(--espresso-2);
+    border-radius: var(--r-card);
+}
+.first-second-block article:first-child{
+    --photo: url("../img/Rectangle14.png");
+}
+.first-second-block article:last-child{
+    --photo: url("../img/10.png");
+}
+.main-container > article{
+    --photo: url("../img/33 1.png");
+}
+.main-container article strong{
+    max-width: 18ch;
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.05;
+    text-wrap: balance;
+}
+.main-container article p{
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--gold-l);
+}
+.main-container article a{
+    align-self: flex-start;
+    margin-top: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+}
+.main-container article a::after,
+.services-container li:first-child a::after,
+.numbers-container ul:last-child > li a::after{
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    vertical-align: -3px;
+    background: currentColor;
+    -webkit-mask: var(--arrow) center / contain no-repeat;
+    mask: var(--arrow) center / contain no-repeat;
+    transition: transform .2s var(--ease);
+}
+
+/* ---------- О нас ---------- */
+.about-container{
+    border-block: 1px solid var(--line);
+}
+.about-container p{
+    max-width: 34em;
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--ink);
+    text-wrap: pretty;
+}
+
+/* ---------- Услуги ---------- */
+.services-container h2{
+    margin-bottom: 8px;
+}
+.services-container ul{
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+}
+.services-container ul:last-of-type{
+    border-bottom: 0;
+}
+.services-container li:first-child{
+    margin-bottom: 6px;
+    font-family: var(--serif);
+    font-size: 27px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--espresso);
+}
+.services-container li:first-child a::after{
+    color: var(--bronze);
+}
+.services-container li:last-child{
+    max-width: 44ch;
+    font-size: 15px;
+    color: var(--muted);
+}
+
+/* ---------- Преимущества ---------- */
+.benefits{
+    display: grid;
+    padding: 44px 22px !important;
+    color: var(--on-dark);
+    background: var(--espresso);
+    border-radius: var(--r-card);
+}
+.benefits > ul{                        /* в вёрстке заголовок — это <ul> */
+    margin-bottom: 16px;
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1.05;
+    color: #fff;
+}
+.benefits li{
+    position: relative;
+    padding: 18px 0 18px 26px;
+    border-top: 1px solid var(--line-d);
+}
+.benefits li::before{                  /* маленькое солнце */
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 27px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+.benefits li p{
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--on-dark);
+}
+
+/* ---------- Размещение ---------- */
+.numbers-container{
+    display: grid;
+    gap: 24px;
+}
+.numbers-container h2{
+    margin-bottom: 0;
+}
+.numbers-container ul{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: flex-start;
+    overflow: hidden;
+    padding-bottom: 24px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--r-card);
+    transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
+}
+.numbers-container ul > img:first-child{
+    order: 0;
+    width: 100%;
+    aspect-ratio: 5 / 4;
+    object-fit: cover;
+    margin-bottom: 20px;
+    transition: transform .6s var(--ease);
+}
+.numbers-container ul > li{
+    flex-basis: 100%;
+    padding: 0 22px;
+}
+.numbers-container ul > li:nth-of-type(2){   /* название */
+    order: 1;
+    font-family: var(--serif);
+    font-size: 27px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--espresso);
+}
+.numbers-container ul > li:nth-of-type(3){   /* город */
+    order: 2;
+    margin-top: 4px;
+    font-size: 14px;
+    color: var(--muted);
+}
+.numbers-container ul > li:nth-of-type(1){   /* цена */
+    order: 3;
+    margin: 16px 0 18px;
+    font-size: 14px;
+    color: var(--muted);
+}
+.numbers-container ul > li:nth-of-type(1) strong{
+    margin: 0 5px;
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--espresso);
+}
+.numbers-container ul > button{
+    order: 4;
+    min-height: 44px;
+    margin-left: 22px;
+    margin-right: auto;
+    padding-inline: 22px;
+    color: var(--espresso);
+    background: transparent;
+    border-color: var(--espresso);
+}
+.numbers-container ul > img:not(:first-child){   /* звёзды рейтинга */
+    order: 5;
+    width: 15px;
+    height: 15px;
+    margin-left: 3px;
+}
+.numbers-container ul > img:nth-of-type(6){
+    margin-right: 22px;
+}
+
+/* последняя карточка — «Посмотреть все варианты» */
+.numbers-container ul:last-child{
+    position: relative;
+    isolation: isolate;
+    display: block;
+    min-height: 300px;
+    padding: 0;
+    border: 0;
+}
+.numbers-container ul:last-child > img{
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    aspect-ratio: auto;
+    object-fit: cover;
+}
+.numbers-container ul:last-child::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(to top, rgba(28, 23, 18, .9), rgba(28, 23, 18, .2));
+}
+.numbers-container ul:last-child > li{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 24px;
+    margin: 0;
+    padding: 0 24px;
+}
+.numbers-container ul:last-child > li a{
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 24px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--espresso);
+    background: var(--gold);
+    border-radius: var(--r-ctl);
+}
+.numbers-container ul:last-child > li a::after{
+    margin-left: 10px;
+    vertical-align: 0;
+}
+
+/* ---------- Форма «Хочу тур» (когда раскомментируете) ---------- */
+.form-container,
+.contacts-container,
+.footer-left,
+.footer-right{
+    display: block;                   /* <sections> — неизвестный тег, по умолчанию inline */
+}
+.form-container{
+    padding: 40px 22px !important;
+    color: var(--on-dark);
+    background: var(--espresso);
+    border-radius: var(--r-card);
+}
+.form-container h2{
+    color: #fff;
+}
+.form-container form{
+    display: grid;
+    gap: 16px;
+}
+.form-container p{
+    font-size: 14px;
+    color: var(--on-dark-2);
+}
+.form-container select,
+.form-container input[type="date"]{
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 14px;
+    font: inherit;
+    font-size: 16px;                  /* 16px — чтобы iOS не зумил поле */
+    color: #fff;
+    background: var(--espresso-2);
+    border: 1px solid var(--line-d);
+    border-radius: var(--r-ctl);
+    color-scheme: dark;
+}
+
+/* ---------- Контакты ---------- */
+.contacts-container{
+    display: grid;
+    gap: 4px;
+}
+.contacts-container strong{
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+}
+.contacts-container a{
+    font-family: var(--serif);
+    font-size: 24px;
+    color: var(--espresso);
+}
+.contacts-container button{
+    justify-self: start;
+    margin-top: 16px;
+}
+
+/* ---------- Подвал ---------- */
+.footer-container{
+    margin-top: 56px;
+    color: var(--on-dark-2);
+    background: var(--espresso);
+}
+.footer-container footer{
+    display: grid;
+    gap: 32px;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding: 48px 20px;
+    font-size: 14px;
+}
+.footer-left,
+.footer-right{
+    display: grid;
+    gap: 12px;
+}
+.footer-container a{
+    color: var(--gold);
+}
+.footer-right img{
+    width: 120px;
+}
+
+/* ==========================================================================
+   ≥ 640px
+   ========================================================================== */
+@media (min-width: 640px){
+    .container{
+        padding-inline: 36px;
+    }
+    h2{
+        font-size: 48px;
+    }
+    main section{
+        padding: 80px 0;
+    }
+    .main-container,
+    .numbers-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .main-container h2,
+    .numbers-container h2{
+        grid-column: 1 / -1;
+    }
+    .main-container article{
+        min-height: 400px;
+    }
+    .main-container > article{
+        grid-column: 1 / -1;
+        min-height: 320px;
+    }
+    .about-container p{
+        font-size: 28px;
+    }
+    .benefits{
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 56px;
+        padding: 64px 44px !important;
+    }
+    .benefits > ul{
+        grid-column: 1 / -1;
+        font-size: 48px;
+    }
+    .benefits li:nth-of-type(2){
+        border-top: 1px solid var(--line-d);
+    }
+    .form-container{
+        padding: 56px 44px !important;
+    }
+    .form-container form{
+        grid-template-columns: repeat(2, 1fr);
+        align-items: end;
+    }
+    .footer-container footer{
+        grid-template-columns: repeat(2, 1fr);
+        padding-inline: 36px;
+    }
+}
+
+/* ==========================================================================
+   ≥ 960px
+   ========================================================================== */
+@media (min-width: 960px){
+    .header-container{
+        padding-top: 22px;
+        gap: 10px 32px;
+    }
+    .header-container > img{
+        width: 176px;
+    }
+    .header-container nav{
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 12px;
+        margin-top: 10px;
+        padding: 0 0 14px;
+    }
+    .header-container nav ul{
+        flex: 1;
+        flex-basis: auto;
+        overflow: visible;
+        gap: 0 36px;
+    }
+    .header-container nav button{
+        flex: none;
+        min-height: 44px;
+        margin-top: 14px;
+    }
+
+    .main-container{
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 18px;
+    }
+    .main-container article{
+        min-height: 520px;
+        padding: 36px 32px 32px;
+    }
+    .main-container > article{
+        grid-column: auto;
+        min-height: 520px;
+    }
+    .main-container article strong{
+        font-size: 36px;
+    }
+
+    .about-container{
+        display: grid;
+        grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+        column-gap: 48px;
+        align-items: start;
+    }
+    .about-container h2{
+        margin-bottom: 0;
+    }
+    .about-container p{
+        font-size: 32px;
+        line-height: 1.4;
+    }
+
+    .services-container{
+        display: grid;
+        grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+        column-gap: 48px;
+        align-items: start;
+    }
+    .services-container h2{
+        grid-column: 1;
+        grid-row: 1 / span 4;
+    }
+    .services-container ul{
+        grid-column: 2;
+        padding: 30px 0;
+    }
+    .services-container ul:first-of-type{
+        padding-top: 0;
+    }
+    .services-container li:first-child{
+        font-size: 32px;
+    }
+
+    .benefits{
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 72px;
+        padding: 80px 64px !important;
+    }
+    .benefits > ul{
+        font-size: 56px;
+        margin-bottom: 28px;
+    }
+    .benefits li{
+        padding-block: 22px;
+    }
+    .benefits li::before{
+        top: 32px;
+    }
+    .benefits li p{
+        font-size: 17px;
+    }
+
+    .numbers-container{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+    .numbers-container ul:last-child{
+        min-height: 0;
+    }
+
+    .form-container{
+        padding: 72px 64px !important;
+    }
+    .form-container form{
+        grid-template-columns: repeat(5, 1fr) auto;
+    }
+    .footer-container footer{
+        grid-template-columns: 1.4fr 1fr;
+        align-items: start;
+    }
+}
+
+/* ==========================================================================
+   Устройства с мышью: hover. На тач-экранах не залипает
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine){
+    button:hover,
+    input[type="submit"]:hover{
+        background: var(--gold-l);
+        border-color: var(--gold-l);
+    }
+    .header-container nav button:last-child:hover{
+        color: #fff;
+        background: rgba(246, 241, 232, .1);
+        border-color: rgba(246, 241, 232, .6);
+    }
+    .numbers-container ul > button:hover{
+        color: var(--linen);
+        background: var(--espresso);
+        border-color: var(--espresso);
+    }
+    .header-container nav li a:hover,
+    .header-container > a:hover{
+        color: var(--gold);
+    }
+    .main-container article a:hover::after,
+    .services-container li:first-child a:hover::after,
+    .numbers-container ul:last-child > li a:hover::after{
+        transform: translateX(4px);
+    }
+    .services-container li:first-child a:hover{
+        color: var(--bronze);
+    }
+    .numbers-container ul:hover{
+        border-color: #c3c7bf;
+        box-shadow: 0 16px 36px rgba(36, 29, 21, .10);
+    }
+    .numbers-container ul:hover > img:first-child{
+        transform: scale(1.04);
+    }
+    .numbers-container ul:last-child > li a:hover{
+        background: var(--gold-l);
+    }
+}
+
+/* ==========================================================================
+   Один выразительный момент: спецпредложения мягко появляются при загрузке
+   ========================================================================== */
+@media (prefers-reduced-motion: no-preference){
+    @keyframes rise{
+        from{
+            opacity: 0;
+            transform: translateY(12px);
+        }
+    }
+    .main-container article{
+        animation: rise .6s var(--ease) both;
+    }
+    .first-second-block article:first-child{ animation-delay: .05s; }
+    .first-second-block article:last-child{ animation-delay: .12s; }
+    .main-container > article{ animation-delay: .19s; }
+}
+
+/* Reduced motion: убираем движение, оставляем смену цвета */
+@media (prefers-reduced-motion: reduce){
+    *,
+    *::before,
+    *::after{
+        animation: none !important;
+        scroll-behavior: auto !important;
+    }
+    .numbers-container ul > img:first-child,
+    .main-container article a::after,
+    .services-container li:first-child a::after{
+        transition: none !important;
+        transform: none !important;
+    }
+}
