@@ -105,7 +105,8 @@ h3{
 }
 h2{
     margin-bottom: 28px;
-    font-size: clamp(23px, 7.4vw, 28px);   /* на 320 px длинные слова не рвутся */
+    font-size: clamp(20px, 6.6vw, 28px);   /* на 320 px «Спецпредложения» влезает в строку */
+    hyphens: auto;
     line-height: 1.1;
 }
 
