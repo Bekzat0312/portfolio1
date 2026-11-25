@@ -1,56 +1,25 @@
 /* ==========================================================================
    Lagoona — main.css
-   Mobile first. Подключается ПОСЛЕ normalize.css и style.css.
-
-   Направление
-   · Мир: солнце над водой, латунь и тёмное дерево отеля (логотип — золотое солнце).
-   · Характер: тёплый, спокойный, уверенный.
-   · Нейтрали: лён и эспрессо. Один акцент — золото логотипа.
-   · Яркие моменты — фотографии. Всё остальное тихое.
-   · Подпись: «солнце на горизонте» — золотая точка и линия над заголовками.
+   Mobile first. Подключается после tokens.css, normalize.css, style.css.
+   Идея бренда: «каждое утро — восход». Форма: арка, круг, 2px контур.
+   Подробности — brandbook.html.
    ========================================================================== */
-
-:root{
-    --espresso:  #1c1712;   /* шапка и тёмные блоки */
-    --espresso-2:#2a231b;
-    --linen:     #f2f4f1;   /* фон страницы: светлый камень */
-    --paper:     #ffffff;   /* карточки */
-    --ink:       #241d15;   /* основной текст */
-    --muted:     #5d625d;   /* второстепенный текст, ≥4.5:1 на фоне */
-    --line:      #dcdfd8;   /* тонкие линии на светлом */
-    --line-d:    rgba(246, 241, 232, .14);   /* тонкие линии на тёмном */
-    --on-dark:   #e9e2d3;   /* текст на тёмном */
-    --on-dark-2: #b9ad9b;   /* второстепенный текст на тёмном */
-    --gold:      #e8b658;   /* цвет логотипа: кнопки и акценты на тёмном */
-    --gold-l:    #f1cd88;
-    --bronze:    #8a5a12;   /* золото для текста на светлом, ≥4.5:1 */
-
-    --r-ctl:  10px;         /* кнопки и поля */
-    --r-card: 16px;         /* карточки */
-
-    --serif: 'Cormorant Garamond', 'Playfair Display', ui-serif, Georgia, 'Times New Roman', serif;
-    --sans:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-
-    --ease:  cubic-bezier(.23, 1, .32, 1);   /* сильный ease-out */
-
-    /* стрелка рисуется маской, а не символом */
-    --arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8h10M9 4l4 4-4 4'/%3E%3C/svg%3E");
-}
 
 /* ---------- База ---------- */
 html{
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
-    scrollbar-color: #a9ada6 var(--linen);
-    accent-color: var(--bronze);
+    scrollbar-color: var(--lagoon) var(--foam);
+    accent-color: var(--lagoon);
 }
 body{
-    font-family: var(--sans);
+    overflow-x: clip;                 /* ничего не вылезает по горизонтали */
+    font-family: var(--text);
     font-size: 16px;
     line-height: 1.6;
-    color: var(--ink);
-    background: var(--linen);
-    caret-color: var(--bronze);
+    color: var(--deep);
+    background: var(--foam);
+    caret-color: var(--lagoon);
     font-variant-numeric: tabular-nums;
     -webkit-font-smoothing: antialiased;
 }
@@ -74,13 +43,13 @@ a{
     transition: color .2s var(--ease), background-color .2s var(--ease), border-color .2s var(--ease);
 }
 ::selection{
-    background: var(--gold);
-    color: var(--espresso);
+    background: var(--sun);
+    color: var(--deep);
 }
 :focus-visible{
-    outline: 2px solid var(--bronze);
+    outline: 3px solid var(--lagoon);
     outline-offset: 3px;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
 .container{
@@ -92,26 +61,15 @@ a{
 
 /* ---------- Заголовки ---------- */
 h2{
-    margin: 0 0 32px;
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 40px;
-    line-height: 1.05;
-    letter-spacing: -.01em;
-    color: var(--espresso);
+    margin: 0 0 28px;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.08;
+    letter-spacing: -.02em;
+    color: var(--deep);
+    overflow-wrap: break-word;
     text-wrap: balance;
-}
-/* подпись: солнце на горизонте */
-h2::before,
-.benefits > ul::before{
-    content: "";
-    display: block;
-    width: 72px;
-    height: 10px;
-    margin-bottom: 20px;
-    background:
-        radial-gradient(circle at 5px 5px, var(--gold) 4.5px, transparent 5px) left center / 10px 10px no-repeat,
-        linear-gradient(var(--bronze), var(--bronze)) 14px 5px / 58px 1px no-repeat;
 }
 
 /* ---------- Кнопки ---------- */
@@ -122,11 +80,11 @@ input[type="submit"]{
     font-weight: 600;
     cursor: pointer;
     min-height: 48px;                 /* зона касания */
-    padding: 0 24px;
-    color: var(--espresso);
-    background: var(--gold);
-    border: 1px solid var(--gold);
-    border-radius: var(--r-ctl);
+    padding: 0 26px;
+    color: var(--deep);
+    background: var(--sun);
+    border: var(--stroke) solid var(--sun);
+    border-radius: var(--r-pill);
     -webkit-appearance: none;
     appearance: none;
     transition: background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .16s var(--ease);
@@ -139,33 +97,49 @@ button a{
     color: inherit;
 }
 
-/* ---------- Шапка (на всю ширину, эспрессо) ---------- */
+/* кружок со стрелкой — общий знак «перейти» */
+.main-container article a::after,
+.services-container li:first-child a::after,
+.numbers-container ul:last-child > li a::after{
+    content: "";
+    display: inline-block;
+    flex: none;
+    width: 36px;
+    height: 36px;
+    margin-left: 12px;
+    vertical-align: middle;
+    background: var(--arrow-deep) center / 16px no-repeat, var(--sun);
+    border-radius: 50%;
+    transition: transform .2s var(--ease);
+}
+
+/* ---------- Шапка: Глубина на всю ширину ---------- */
 .header-container{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 12px 20px;
-    padding: 18px 0 0;
-    color: var(--on-dark);
-    background: var(--espresso);
-    box-shadow: 0 0 0 100vmax var(--espresso);
+    padding: 16px 0 0;
+    color: var(--white);
+    background: var(--deep);
+    box-shadow: 0 0 0 100vmax var(--deep);
     clip-path: inset(0 -100vmax);
 }
 .header-container > img{
-    width: 148px;
+    width: 150px;
     margin-right: auto;
-    border-radius: 6px;
+    border-radius: 8px;
 }
 .header-container > a{
     font-size: 15px;
     font-weight: 500;
 }
 .header-container > a[href^="tel"]{
-    color: #fff;
+    color: var(--white);
     white-space: nowrap;
 }
 .header-container > a[href=""]{
-    color: var(--gold);
+    color: var(--sun);
 }
 .header-container nav{
     flex-basis: 100%;
@@ -178,8 +152,8 @@ button a{
 .header-container nav ul{
     flex-basis: 100%;
     display: flex;
-    gap: 0 26px;
-    overflow-x: auto;                 /* меню скроллится, если не влезает */
+    gap: 0 24px;
+    overflow-x: auto;                 /* меню скроллится само, а не страница */
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
 }
@@ -191,29 +165,33 @@ button a{
     padding: 12px 0;
     white-space: nowrap;
     font-size: 15px;
-    color: var(--on-dark);
+    color: var(--white);
 }
 .header-container nav button{
     flex: 1 1 150px;
     padding-inline: 16px;
 }
 .header-container nav button:last-child{
-    color: var(--on-dark);
+    color: var(--white);
     background: transparent;
-    border-color: rgba(246, 241, 232, .35);
+    border-color: rgba(255, 255, 255, .5);
 }
 
 main section{
     padding: 56px 0;
 }
 
-/* ---------- Спецпредложения: три фотографии ---------- */
+/* ---------- Спецпредложения: арки-окна на Лагуне ---------- */
 .main-container{
     display: grid;
-    gap: 14px;
+    gap: 20px;
+    background: var(--lagoon);
+    box-shadow: 0 0 0 100vmax var(--lagoon);
+    clip-path: inset(0 -100vmax);
 }
 .main-container h2{
-    margin-bottom: 12px;
+    margin-bottom: 8px;
+    color: var(--white);
 }
 .first-second-block{
     display: contents;                /* карточки становятся прямыми детьми сетки */
@@ -221,20 +199,18 @@ main section{
 .main-container article{
     --photo: none;
     position: relative;
-    isolation: isolate;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    gap: 4px;
-    min-height: 340px;
-    padding: 28px 26px 26px;
-    overflow: hidden;
-    color: #fff;
+    gap: 6px;
+    min-height: 440px;
+    padding: 28px 26px 28px;
+    color: var(--white);
     background:
-        linear-gradient(to top, rgba(28, 23, 18, .9) 0%, rgba(28, 23, 18, .45) 48%, rgba(28, 23, 18, .08) 100%),
+        linear-gradient(to top, rgba(11, 34, 55, .92) 0%, rgba(11, 34, 55, .5) 42%, rgba(11, 34, 55, 0) 72%),
         var(--photo) center / cover no-repeat,
-        var(--espresso-2);
-    border-radius: var(--r-card);
+        var(--deep);
+    border-radius: var(--arch);       /* арка: окно на восход */
 }
 .first-second-block article:first-child{
     --photo: url("../img/Rectangle14.png");
@@ -246,53 +222,72 @@ main section{
     --photo: url("../img/33 1.png");
 }
 .main-container article strong{
-    max-width: 18ch;
-    font-family: var(--serif);
-    font-size: 30px;
-    font-weight: 500;
-    line-height: 1.05;
-    text-wrap: balance;
-}
-.main-container article p{
-    font-family: var(--serif);
+    max-width: 14ch;
+    font-family: var(--display);
     font-size: 22px;
     font-weight: 600;
-    color: var(--gold-l);
+    line-height: 1.1;
+    letter-spacing: -.01em;
+    text-wrap: balance;
+}
+.main-container article p{                /* цена — знак «солнце» */
+    position: absolute;
+    top: 34%;
+    right: 16px;
+    display: grid;
+    place-items: center;
+    width: 104px;
+    height: 104px;
+    padding: 8px;
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    color: var(--deep);
+    background: var(--sun);
+    border-radius: 50%;
+    transform: rotate(-8deg);
+    transition: transform .3s var(--ease);
 }
 .main-container article a{
+    display: inline-flex;
+    align-items: center;
     align-self: flex-start;
     margin-top: 14px;
     font-size: 15px;
     font-weight: 600;
-    color: #fff;
-}
-.main-container article a::after,
-.services-container li:first-child a::after,
-.numbers-container ul:last-child > li a::after{
-    content: "";
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin-left: 8px;
-    vertical-align: -3px;
-    background: currentColor;
-    -webkit-mask: var(--arrow) center / contain no-repeat;
-    mask: var(--arrow) center / contain no-repeat;
-    transition: transform .2s var(--ease);
+    color: var(--white);
 }
 
 /* ---------- О нас ---------- */
 .about-container{
-    border-block: 1px solid var(--line);
+    position: relative;
+    overflow: clip;
+    padding-bottom: 120px !important;
 }
 .about-container p{
-    max-width: 34em;
-    font-family: var(--serif);
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 1.45;
-    color: var(--ink);
+    position: relative;
+    max-width: 30em;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--deep);
     text-wrap: pretty;
+}
+.about-container::after{              /* восход: полукруг с лучами */
+    content: "";
+    position: absolute;
+    right: -70px;
+    bottom: -150px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, var(--sun) 0 38%, transparent 38.5%),
+        repeating-conic-gradient(var(--sun) 0 5deg, transparent 5deg 15deg);
+    -webkit-mask: radial-gradient(circle, #000 0 68%, transparent 69%);
+    mask: radial-gradient(circle, #000 0 68%, transparent 69%);
+    pointer-events: none;
 }
 
 /* ---------- Услуги ---------- */
@@ -300,70 +295,77 @@ main section{
     margin-bottom: 8px;
 }
 .services-container ul{
-    padding: 24px 0;
-    border-bottom: 1px solid var(--line);
+    padding: 22px 0;
+    border-bottom: var(--stroke) solid var(--deep);
 }
 .services-container ul:last-of-type{
     border-bottom: 0;
 }
 .services-container li:first-child{
-    margin-bottom: 6px;
-    font-family: var(--serif);
-    font-size: 27px;
-    font-weight: 500;
-    line-height: 1.15;
-    color: var(--espresso);
+    margin-bottom: 8px;
+    font-family: var(--display);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -.01em;
 }
-.services-container li:first-child a::after{
-    color: var(--bronze);
+.services-container li:first-child a{
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
 }
 .services-container li:last-child{
-    max-width: 44ch;
+    max-width: 46ch;
     font-size: 15px;
     color: var(--muted);
 }
 
-/* ---------- Преимущества ---------- */
+/* ---------- Преимущества: Солнце на всю ширину ---------- */
 .benefits{
     display: grid;
-    padding: 44px 22px !important;
-    color: var(--on-dark);
-    background: var(--espresso);
-    border-radius: var(--r-card);
+    background: var(--sun);
+    box-shadow: 0 0 0 100vmax var(--sun);
+    clip-path: inset(0 -100vmax);
 }
 .benefits > ul{                        /* в вёрстке заголовок — это <ul> */
     margin-bottom: 16px;
-    font-family: var(--serif);
-    font-size: 40px;
-    font-weight: 500;
-    line-height: 1.05;
-    color: #fff;
+    font-family: var(--display);
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -.02em;
+    overflow-wrap: break-word;
+    color: var(--deep);
 }
 .benefits li{
     position: relative;
-    padding: 18px 0 18px 26px;
-    border-top: 1px solid var(--line-d);
+    padding: 18px 0 18px 36px;
+    border-top: var(--stroke) solid var(--deep);
 }
 .benefits li::before{                  /* маленькое солнце */
     content: "";
     position: absolute;
     left: 0;
-    top: 27px;
-    width: 8px;
-    height: 8px;
+    top: 22px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background: var(--gold);
+    background: var(--deep);
+    box-shadow: inset 0 0 0 5px var(--sun);
+    outline: var(--stroke) solid var(--deep);
+    outline-offset: -2px;
 }
 .benefits li p{
     font-size: 16px;
-    line-height: 1.55;
-    color: var(--on-dark);
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--deep);
 }
 
-/* ---------- Размещение ---------- */
+/* ---------- Размещение: карточки-арки ---------- */
 .numbers-container{
     display: grid;
-    gap: 24px;
+    gap: 28px;
 }
 .numbers-container h2{
     margin-bottom: 0;
@@ -374,16 +376,16 @@ main section{
     align-items: center;
     align-content: flex-start;
     overflow: hidden;
-    padding-bottom: 24px;
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: var(--r-card);
-    transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
+    padding-bottom: 26px;
+    background: var(--white);
+    border: var(--stroke) solid var(--deep);
+    border-radius: var(--arch);
+    transition: transform .25s var(--ease), background-color .25s var(--ease);
 }
 .numbers-container ul > img:first-child{
     order: 0;
     width: 100%;
-    aspect-ratio: 5 / 4;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
     margin-bottom: 20px;
     transition: transform .6s var(--ease);
@@ -394,11 +396,11 @@ main section{
 }
 .numbers-container ul > li:nth-of-type(2){   /* название */
     order: 1;
-    font-family: var(--serif);
-    font-size: 27px;
-    font-weight: 500;
-    line-height: 1.1;
-    color: var(--espresso);
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -.01em;
 }
 .numbers-container ul > li:nth-of-type(3){   /* город */
     order: 2;
@@ -414,20 +416,20 @@ main section{
 }
 .numbers-container ul > li:nth-of-type(1) strong{
     margin: 0 5px;
-    font-family: var(--serif);
-    font-size: 32px;
+    font-family: var(--display);
+    font-size: 26px;
     font-weight: 600;
-    color: var(--espresso);
+    letter-spacing: -.02em;
+    color: var(--deep);
 }
 .numbers-container ul > button{
     order: 4;
-    min-height: 44px;
     margin-left: 22px;
     margin-right: auto;
-    padding-inline: 22px;
-    color: var(--espresso);
-    background: transparent;
-    border-color: var(--espresso);
+    padding-inline: 24px;
+    color: var(--white);
+    background: var(--deep);
+    border-color: var(--deep);
 }
 .numbers-container ul > img:not(:first-child){   /* звёзды рейтинга */
     order: 5;
@@ -444,9 +446,9 @@ main section{
     position: relative;
     isolation: isolate;
     display: block;
-    min-height: 300px;
+    min-height: 380px;
     padding: 0;
-    border: 0;
+    border-color: var(--deep);
 }
 .numbers-container ul:last-child > img{
     position: absolute;
@@ -463,30 +465,32 @@ main section{
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(to top, rgba(28, 23, 18, .9), rgba(28, 23, 18, .2));
+    background: linear-gradient(to top, rgba(11, 34, 55, .92), rgba(11, 34, 55, .1) 70%);
 }
 .numbers-container ul:last-child > li{
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 24px;
+    bottom: 26px;
     margin: 0;
     padding: 0 24px;
 }
 .numbers-container ul:last-child > li a{
     display: inline-flex;
     align-items: center;
-    min-height: 48px;
-    padding: 0 24px;
+    padding: 6px 6px 6px 24px;
+    font-family: var(--display);
     font-size: 15px;
     font-weight: 600;
-    color: var(--espresso);
-    background: var(--gold);
-    border-radius: var(--r-ctl);
+    color: var(--deep);
+    background: var(--sun);
+    border-radius: var(--r-pill);
 }
 .numbers-container ul:last-child > li a::after{
-    margin-left: 10px;
-    vertical-align: 0;
+    width: 40px;
+    height: 40px;
+    margin-left: 14px;
+    background: var(--arrow-deep) center / 16px no-repeat, var(--white);
 }
 
 /* ---------- Форма «Хочу тур» (когда раскомментируете) ---------- */
@@ -498,12 +502,12 @@ main section{
 }
 .form-container{
     padding: 40px 22px !important;
-    color: var(--on-dark);
-    background: var(--espresso);
+    color: var(--white);
+    background: var(--deep);
     border-radius: var(--r-card);
 }
 .form-container h2{
-    color: #fff;
+    color: var(--white);
 }
 .form-container form{
     display: grid;
@@ -511,19 +515,19 @@ main section{
 }
 .form-container p{
     font-size: 14px;
-    color: var(--on-dark-2);
+    color: #b6c7d4;
 }
 .form-container select,
 .form-container input[type="date"]{
     width: 100%;
     min-height: 48px;
-    padding: 10px 14px;
+    padding: 10px 16px;
     font: inherit;
     font-size: 16px;                  /* 16px — чтобы iOS не зумил поле */
-    color: #fff;
-    background: var(--espresso-2);
-    border: 1px solid var(--line-d);
-    border-radius: var(--r-ctl);
+    color: var(--white);
+    background: transparent;
+    border: var(--stroke) solid rgba(255, 255, 255, .4);
+    border-radius: 14px;
     color-scheme: dark;
 }
 
@@ -539,9 +543,9 @@ main section{
     color: var(--muted);
 }
 .contacts-container a{
-    font-family: var(--serif);
-    font-size: 24px;
-    color: var(--espresso);
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 500;
 }
 .contacts-container button{
     justify-self: start;
@@ -551,8 +555,8 @@ main section{
 /* ---------- Подвал ---------- */
 .footer-container{
     margin-top: 56px;
-    color: var(--on-dark-2);
-    background: var(--espresso);
+    color: #b6c7d4;
+    background: var(--deep);
 }
 .footer-container footer{
     display: grid;
@@ -568,7 +572,7 @@ main section{
     gap: 12px;
 }
 .footer-container a{
-    color: var(--gold);
+    color: var(--sun);
 }
 .footer-right img{
     width: 120px;
@@ -581,8 +585,9 @@ main section{
     .container{
         padding-inline: 36px;
     }
-    h2{
-        font-size: 48px;
+    h2,
+    .benefits > ul{
+        font-size: 38px;
     }
     main section{
         padding: 80px 0;
@@ -595,27 +600,29 @@ main section{
     .numbers-container h2{
         grid-column: 1 / -1;
     }
-    .main-container article{
-        min-height: 400px;
-    }
     .main-container > article{
         grid-column: 1 / -1;
-        min-height: 320px;
+        min-height: 360px;
+        border-radius: 999px 999px 20px 20px;
     }
     .about-container p{
-        font-size: 28px;
+        font-size: 22px;
+    }
+    .about-container::after{
+        right: 0;
+        width: 400px;
+        height: 400px;
+        bottom: -200px;
     }
     .benefits{
         grid-template-columns: repeat(2, 1fr);
         column-gap: 56px;
-        padding: 64px 44px !important;
     }
     .benefits > ul{
         grid-column: 1 / -1;
-        font-size: 48px;
     }
     .benefits li:nth-of-type(2){
-        border-top: 1px solid var(--line-d);
+        border-top: var(--stroke) solid var(--deep);
     }
     .form-container{
         padding: 56px 44px !important;
@@ -635,7 +642,7 @@ main section{
    ========================================================================== */
 @media (min-width: 960px){
     .header-container{
-        padding-top: 22px;
+        padding-top: 20px;
         gap: 10px 32px;
     }
     .header-container > img{
@@ -661,39 +668,54 @@ main section{
     }
 
     .main-container{
-        grid-template-columns: 1.5fr 1fr 1fr;
-        gap: 18px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
     }
     .main-container article{
-        min-height: 520px;
+        min-height: 560px;
         padding: 36px 32px 32px;
     }
     .main-container > article{
         grid-column: auto;
-        min-height: 520px;
+        min-height: 560px;
+        border-radius: var(--arch);
     }
     .main-container article strong{
-        font-size: 36px;
+        font-size: 26px;
+    }
+    .main-container article p{
+        top: 36%;
+        right: -10px;
+        width: 116px;
+        height: 116px;
+        font-size: 15px;
     }
 
     .about-container{
         display: grid;
-        grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
-        column-gap: 48px;
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        column-gap: 56px;
         align-items: start;
+        padding-bottom: 140px !important;
     }
     .about-container h2{
         margin-bottom: 0;
     }
     .about-container p{
-        font-size: 32px;
-        line-height: 1.4;
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    .about-container::after{
+        width: 520px;
+        height: 520px;
+        right: 4%;
+        bottom: -300px;
     }
 
     .services-container{
         display: grid;
-        grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
-        column-gap: 48px;
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        column-gap: 56px;
         align-items: start;
     }
     .services-container h2{
@@ -708,34 +730,37 @@ main section{
         padding-top: 0;
     }
     .services-container li:first-child{
-        font-size: 32px;
+        font-size: 24px;
     }
 
     .benefits{
         grid-template-columns: repeat(2, 1fr);
         column-gap: 72px;
-        padding: 80px 64px !important;
     }
     .benefits > ul{
-        font-size: 56px;
+        font-size: 48px;
         margin-bottom: 28px;
     }
     .benefits li{
         padding-block: 22px;
+        padding-left: 44px;
     }
     .benefits li::before{
-        top: 32px;
+        top: 27px;
     }
     .benefits li p{
-        font-size: 17px;
+        font-size: 18px;
     }
 
     .numbers-container{
         grid-template-columns: repeat(3, 1fr);
-        gap: 28px;
+        gap: 32px;
     }
     .numbers-container ul:last-child{
         min-height: 0;
+    }
+    .numbers-container ul > li:nth-of-type(2){
+        font-size: 22px;
     }
 
     .form-container{
@@ -751,67 +776,79 @@ main section{
 }
 
 /* ==========================================================================
-   Устройства с мышью: hover. На тач-экранах не залипает
+   Устройства с мышью: hover. На тач-экранах не залипает.
    ========================================================================== */
 @media (hover: hover) and (pointer: fine){
     button:hover,
     input[type="submit"]:hover{
-        background: var(--gold-l);
-        border-color: var(--gold-l);
+        color: var(--white);
+        background: var(--lagoon);
+        border-color: var(--lagoon);
+    }
+    .header-container nav button:first-of-type:hover{
+        color: var(--deep);
+        background: var(--white);
+        border-color: var(--white);
     }
     .header-container nav button:last-child:hover{
-        color: #fff;
-        background: rgba(246, 241, 232, .1);
-        border-color: rgba(246, 241, 232, .6);
+        color: var(--deep);
+        background: var(--white);
+        border-color: var(--white);
     }
     .numbers-container ul > button:hover{
-        color: var(--linen);
-        background: var(--espresso);
-        border-color: var(--espresso);
+        color: var(--deep);
+        background: var(--sun);
+        border-color: var(--sun);
     }
     .header-container nav li a:hover,
     .header-container > a:hover{
-        color: var(--gold);
+        color: var(--sun);
+    }
+    .main-container article:hover p{
+        transform: rotate(0) scale(1.06);
     }
     .main-container article a:hover::after,
     .services-container li:first-child a:hover::after,
     .numbers-container ul:last-child > li a:hover::after{
-        transform: translateX(4px);
+        transform: translateX(5px);
     }
-    .services-container li:first-child a:hover{
-        color: var(--bronze);
+    .services-container ul:hover li:first-child{
+        color: var(--lagoon);
     }
     .numbers-container ul:hover{
-        border-color: #c3c7bf;
-        box-shadow: 0 16px 36px rgba(36, 29, 21, .10);
+        transform: translateY(-6px);
     }
     .numbers-container ul:hover > img:first-child{
-        transform: scale(1.04);
+        transform: scale(1.05);
     }
     .numbers-container ul:last-child > li a:hover{
-        background: var(--gold-l);
+        background: var(--white);
+    }
+    .contacts-container a:hover{
+        color: var(--lagoon);
     }
 }
 
 /* ==========================================================================
-   Один выразительный момент: спецпредложения мягко появляются при загрузке
+   Один выразительный момент: «восход» — арки поднимаются на место
    ========================================================================== */
 @media (prefers-reduced-motion: no-preference){
-    @keyframes rise{
+    @keyframes sunrise{
         from{
             opacity: 0;
-            transform: translateY(12px);
+            clip-path: inset(100% 0 0 0 round 0);
+            transform: translateY(16px);
         }
     }
     .main-container article{
-        animation: rise .6s var(--ease) both;
+        animation: sunrise .8s var(--ease) both;
     }
     .first-second-block article:first-child{ animation-delay: .05s; }
-    .first-second-block article:last-child{ animation-delay: .12s; }
-    .main-container > article{ animation-delay: .19s; }
+    .first-second-block article:last-child{ animation-delay: .15s; }
+    .main-container > article{ animation-delay: .25s; }
 }
 
-/* Reduced motion: убираем движение, оставляем смену цвета */
+/* Reduced motion: убираем движение, цвет остаётся */
 @media (prefers-reduced-motion: reduce){
     *,
     *::before,
@@ -819,9 +856,12 @@ main section{
         animation: none !important;
         scroll-behavior: auto !important;
     }
+    .numbers-container ul,
     .numbers-container ul > img:first-child,
+    .main-container article p,
     .main-container article a::after,
-    .services-container li:first-child a::after{
+    .services-container li:first-child a::after,
+    .numbers-container ul:last-child > li a::after{
         transition: none !important;
         transform: none !important;
     }

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lagoona — брендбук</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/tokens.css">
+    <link rel="stylesheet" href="./assets/css/brandbook.css">
+</head>
+<body>
+
+<header class="bb-top">
+    <div class="bb-wrap bb-top__row">
+        <img class="bb-top__logo" src="./assets/img/logo.png" alt="Lagoona — сеть отелей">
+        <nav aria-label="Разделы брендбука">
+            <a href="#idea">Идея</a>
+            <a href="#logo">Логотип</a>
+            <a href="#color">Цвет</a>
+            <a href="#type">Шрифты</a>
+            <a href="#shape">Форма</a>
+            <a href="#photo">Фото</a>
+            <a href="#voice">Голос</a>
+            <a href="#ui">Компоненты</a>
+            <a href="#motion">Движение</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <!-- Обложка -->
+    <section class="bb-cover">
+        <div class="bb-wrap">
+            <h1>Брендбук<br>Lagoona</h1>
+            <p>Каждое утро&nbsp;— восход. Как мы выглядим, говорим и двигаемся, чтобы гость узнавал нас с первого экрана.</p>
+        </div>
+        <div class="bb-cover__sun" aria-hidden="true"></div>
+    </section>
+
+    <!-- 1. Идея -->
+    <section id="idea" class="bb-section">
+        <div class="bb-wrap bb-grid">
+            <h2>Идея</h2>
+            <div class="bb-body">
+                <p class="bb-lead">Lagoona — отель, где солнце всегда встаёт над водой. Мы не обещаем роскошь, мы обещаем хорошее утро.</p>
+                <ul class="bb-principles">
+                    <li>
+                        <strong>Свет</strong>
+                        <span>Цвета плоские, чистые и насыщенные, как полуденное солнце. Никаких стеклянных свечений и градиентных переливов.</span>
+                    </li>
+                    <li>
+                        <strong>Вода</strong>
+                        <span>Много воздуха. Крупные поля, спокойный ритм, фотографии, в которые хочется войти.</span>
+                    </li>
+                    <li>
+                        <strong>Тепло</strong>
+                        <span>Говорим просто и конкретно, как хозяин, который встречает у ворот, а не как рекламный буклет.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Логотип -->
+    <section id="logo" class="bb-section bb-section--sun">
+        <div class="bb-wrap bb-grid">
+            <h2>Логотип</h2>
+            <div class="bb-body">
+                <p class="bb-lead">Золотой знак с солнцем уже узнаваем, поэтому мы его не меняем. Вся система построена вокруг него.</p>
+
+                <div class="bb-logo-demo">
+                    <figure>
+                        <div class="bb-clear"><img src="./assets/img/logo.png" alt="Логотип Lagoona"></div>
+                        <figcaption>Охранное поле — высота солнца со всех сторон. Минимальная ширина: 120&nbsp;px на экране, 30&nbsp;мм в печати.</figcaption>
+                    </figure>
+                    <figure>
+                        <div class="bb-on bb-on--deep"><img src="./assets/img/logo.png" alt="Логотип на Глубине"></div>
+                        <figcaption>На Глубине и на Пене. Золотая подложка логотипа уже входит в знак.</figcaption>
+                    </figure>
+                </div>
+
+                <h3>Нельзя</h3>
+                <ul class="bb-donts">
+                    <li>
+                        <div class="bb-dont"><img class="bb-stretch" src="./assets/img/logo.png" alt=""></div>
+                        <span>Растягивать и сжимать</span>
+                    </li>
+                    <li>
+                        <div class="bb-dont"><img class="bb-hue" src="./assets/img/logo.png" alt=""></div>
+                        <span>Перекрашивать</span>
+                    </li>
+                    <li>
+                        <div class="bb-dont"><img class="bb-glow" src="./assets/img/logo.png" alt=""></div>
+                        <span>Добавлять тени и свечения</span>
+                    </li>
+                    <li>
+                        <div class="bb-dont bb-dont--photo"><img src="./assets/img/logo.png" alt=""></div>
+                        <span>Ставить поверх пёстрых фото</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Цвет -->
+    <section id="color" class="bb-section">
+        <div class="bb-wrap bb-grid">
+            <h2>Цвет</h2>
+            <div class="bb-body">
+                <p class="bb-lead">Четыре цвета и белый. Каждый занимает своё место, поэтому страница читается с первого взгляда.</p>
+
+                <ul class="bb-swatches">
+                    <li class="bb-sw bb-sw--sun">
+                        <b>Солнце</b>
+                        <code>#EDB64A</code>
+                        <small>RGB 237 182 74</small>
+                        <span>Знак, кнопки, цена. Текст на нём только Глубина.</span>
+                    </li>
+                    <li class="bb-sw bb-sw--lagoon">
+                        <b>Лагуна</b>
+                        <code>#0B7A82</code>
+                        <small>RGB 11 122 130</small>
+                        <span>Крупные цветные поля. Текст на ней только белый.</span>
+                    </li>
+                    <li class="bb-sw bb-sw--deep">
+                        <b>Глубина</b>
+                        <code>#0B2237</code>
+                        <small>RGB 11 34 55</small>
+                        <span>Весь текст, шапка, контуры.</span>
+                    </li>
+                    <li class="bb-sw bb-sw--foam">
+                        <b>Пена</b>
+                        <code>#F4FBFA</code>
+                        <small>RGB 244 251 250</small>
+                        <span>Фон страницы. Белый только для карточек.</span>
+                    </li>
+                </ul>
+
+                <h3>Пропорции на странице</h3>
+                <div class="bb-ratio" role="img" aria-label="Пена 45 процентов, Глубина 25, Лагуна 20, Солнце 10">
+                    <i style="flex:45;background:var(--foam)">45</i>
+                    <i style="flex:25;background:var(--deep);color:#fff">25</i>
+                    <i style="flex:20;background:var(--lagoon);color:#fff">20</i>
+                    <i style="flex:10;background:var(--sun)">10</i>
+                </div>
+
+                <h3>Пары, которые можно</h3>
+                <ul class="bb-pairs">
+                    <li style="background:var(--foam);color:var(--deep)"><b>Aa</b> Глубина на Пене <em>15,4 : 1</em></li>
+                    <li style="background:var(--sun);color:var(--deep)"><b>Aa</b> Глубина на Солнце <em>8,8 : 1</em></li>
+                    <li style="background:var(--lagoon);color:#fff"><b>Aa</b> Белый на Лагуне <em>5,1 : 1</em></li>
+                    <li style="background:var(--deep);color:var(--sun)"><b>Aa</b> Солнце на Глубине <em>8,8 : 1</em></li>
+                </ul>
+                <p class="bb-note">Солнце на Лагуне, наоборот, не читается (2,8&nbsp;:&nbsp;1), поэтому на бирюзе мы ставим жёлтый только как плашку с тёмным текстом.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Шрифты -->
+    <section id="type" class="bb-section bb-section--deep">
+        <div class="bb-wrap bb-grid">
+            <h2>Шрифты</h2>
+            <div class="bb-body">
+                <p class="bb-lead">Два голоса: широкий Unbounded для заголовков, спокойный Onest для всего остального. Оба с кириллицей и бесплатные.</p>
+
+                <div class="bb-specimen">
+                    <div>
+                        <small>Unbounded · 600 · заголовки, цены, названия</small>
+                        <p class="bb-spec-display">Солнце над водой</p>
+                    </div>
+                    <div>
+                        <small>Onest · 400 / 500 / 600 · текст, подписи, кнопки</small>
+                        <p class="bb-spec-text">Номера с видом на лагуну, завтрак на террасе и тишина после десяти вечера.</p>
+                    </div>
+                </div>
+
+                <table class="bb-scale">
+                    <thead><tr><th>Уровень</th><th>Шрифт</th><th>Телефон</th><th>Ноутбук</th></tr></thead>
+                    <tbody>
+                        <tr><td>Заголовок раздела</td><td>Unbounded 600</td><td>28</td><td>48</td></tr>
+                        <tr><td>Название карточки</td><td>Unbounded 600</td><td>20</td><td>26</td></tr>
+                        <tr><td>Цена</td><td>Unbounded 600</td><td>26</td><td>26</td></tr>
+                        <tr><td>Основной текст</td><td>Onest 400</td><td>16</td><td>18</td></tr>
+                        <tr><td>Подпись</td><td>Onest 400</td><td>14</td><td>14</td></tr>
+                    </tbody>
+                </table>
+
+                <ul class="bb-rules">
+                    <li>Регистр обычный: никаких заголовков капсом и разрядки.</li>
+                    <li>Жирнее 600 не бывает, курсив не используем.</li>
+                    <li>Цифры табличные, чтобы цены в столбик не прыгали.</li>
+                    <li>Заголовок не длиннее двух строк на телефоне.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Форма -->
+    <section id="shape" class="bb-section">
+        <div class="bb-wrap bb-grid">
+            <h2>Форма</h2>
+            <div class="bb-body">
+                <p class="bb-lead">Три формы из одного образа восхода. Всё остальное прямое и спокойное.</p>
+
+                <ul class="bb-shapes">
+                    <li>
+                        <div class="bb-shape bb-shape--arch" aria-hidden="true"></div>
+                        <strong>Арка</strong>
+                        <span>Окно на восход. Фото-карточки спецпредложений и номеров.</span>
+                    </li>
+                    <li>
+                        <div class="bb-shape bb-shape--circle" aria-hidden="true"><b>от 55&nbsp;000&nbsp;р</b></div>
+                        <strong>Круг</strong>
+                        <span>Солнце. Цена на карточке и кнопка со стрелкой. Наклон −8°, при наведении выравнивается.</span>
+                    </li>
+                    <li>
+                        <div class="bb-shape bb-shape--rays" aria-hidden="true"></div>
+                        <strong>Лучи</strong>
+                        <span>Один раз на странице, у нижнего края блока «О нас». Всегда наполовину скрыты линией горизонта.</span>
+                    </li>
+                </ul>
+
+                <ul class="bb-rules">
+                    <li>Контур всегда 2&nbsp;px, цвет Глубина.</li>
+                    <li>Радиусы: кнопки и метки — полный круг, карточки — арка или 20&nbsp;px, поля ввода — 14&nbsp;px.</li>
+                    <li>Тени, свечения и градиенты поверх цвета не используем. Исключение: тёмная подложка под текстом на фото.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Фото -->
+    <section id="photo" class="bb-section bb-section--lagoon">
+        <div class="bb-wrap bb-grid">
+            <h2>Фото</h2>
+            <div class="bb-body">
+                <p class="bb-lead">Свет решает всё. Мы берём кадры с тёплым низким солнцем, водой и живыми людьми.</p>
+
+                <ul class="bb-photos">
+                    <li><div class="bb-ph" style="background-image:url('./assets/img/Rectangle14.png')"></div><span>Вода и небо в одном кадре</span></li>
+                    <li><div class="bb-ph" style="background-image:url('./assets/img/10.png')"></div><span>Деталь, в которой читается отдых</span></li>
+                    <li><div class="bb-ph" style="background-image:url('./assets/img/33 1.png')"></div><span>Интерьер при тёплом свете</span></li>
+                </ul>
+
+                <ul class="bb-rules bb-rules--light">
+                    <li>Кадрируем в арку: главное в центре, верх свободен.</li>
+                    <li>Поверх фото только тёмная подложка снизу, под текстом. Никаких цветных фильтров.</li>
+                    <li>Не берём стоковые улыбки с белым фоном и фото без источника света.</li>
+                    <li>Размер: от 1600&nbsp;px по длинной стороне, чтобы арка не была мягкой.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Голос -->
+    <section id="voice" class="bb-section">
+        <div class="bb-wrap bb-grid">
+            <h2>Голос</h2>
+            <div class="bb-body">
+                <p class="bb-lead">Тёплый, прямой, с лёгкой улыбкой. Говорим фактами: что, где, когда и сколько.</p>
+
+                <div class="bb-voice">
+                    <div class="bb-voice__yes">
+                        <h3>Так</h3>
+                        <ul>
+                            <li>Горящий тур на Крит. Вылет в четверг, 7 ночей</li>
+                            <li>Номер с видом на лагуну</li>
+                            <li>Завтрак до 11:00</li>
+                            <li>Хотите тур? Оставьте номер, перезвоним за 5 минут</li>
+                        </ul>
+                    </div>
+                    <div class="bb-voice__no">
+                        <h3>Не так</h3>
+                        <ul>
+                            <li>Уникальные предложения только для вас!!!</li>
+                            <li>Незабываемый люксовый опыт отдыха</li>
+                            <li>Лучший сервис в мире</li>
+                            <li>Не упустите шанс, количество мест ограничено</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <ul class="bb-rules">
+                    <li>Без восклицательных знаков и слов «лучший», «уникальный», «незабываемый».</li>
+                    <li>В цене всегда указываем, за что она: «от 4&nbsp;698&nbsp;р / ночь».</li>
+                    <li>Кнопка называет действие: «Номера», «Хочу тур», «Построить маршрут».</li>
+                    <li>Короткие заголовки и подписи без точки в конце.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Компоненты -->
+    <section id="ui" class="bb-section bb-section--sun">
+        <div class="bb-wrap bb-grid">
+            <h2>Компоненты</h2>
+            <div class="bb-body">
+                <p class="bb-lead">Как всё это выглядит в интерфейсе.</p>
+
+                <div class="bb-ui">
+                    <div class="bb-ui__cell">
+                        <small>Кнопки</small>
+                        <div class="bb-ui__row">
+                            <button class="bb-btn bb-btn--sun">Хочу тур</button>
+                            <button class="bb-btn bb-btn--deep">Номера</button>
+                            <button class="bb-btn bb-btn--line">Обратный звонок</button>
+                        </div>
+                        <p class="bb-note">Высота не меньше 48&nbsp;px. При наведении: заливка меняется на Лагуну, при нажатии кнопка чуть сжимается.</p>
+                    </div>
+                    <div class="bb-ui__cell">
+                        <small>Ссылка со стрелкой</small>
+                        <a class="bb-arrow" href="#ui">Подробнее</a>
+                        <p class="bb-note">Стрелка в круге Солнца, при наведении сдвигается на 5&nbsp;px.</p>
+                    </div>
+                    <div class="bb-ui__cell">
+                        <small>Поле ввода</small>
+                        <label class="bb-field"><span>Город вылета</span><select><option>Санкт-Петербург</option><option>Москва</option></select></label>
+                        <p class="bb-note">Контур 2&nbsp;px, радиус 14&nbsp;px, шрифт не меньше 16&nbsp;px.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Движение -->
+    <section id="motion" class="bb-section">
+        <div class="bb-wrap bb-grid">
+            <h2>Движение</h2>
+            <div class="bb-body">
+                <p class="bb-lead">Одно главное движение — восход. Остальное только отвечает на действие.</p>
+                <ul class="bb-motion">
+                    <li><strong>Восход</strong><span>Карточки спецпредложений поднимаются снизу при загрузке, 0,8&nbsp;с, с шагом 0,1&nbsp;с. Один раз за визит.</span></li>
+                    <li><strong>Ответ</strong><span>Наведение 160–250&nbsp;мс. Нажатие: масштаб 0,97. Меняем цвет и положение, не размер макета.</span></li>
+                    <li><strong>Кривая</strong><span>Всегда ease-out: <code>cubic-bezier(.23, 1, .32, 1)</code>. Старт быстрый, остановка мягкая.</span></li>
+                    <li><strong>Тише</strong><span>Если в системе включено «уменьшить движение», анимации выключаются, а цвета остаются.</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bb-foot">
+    <div class="bb-wrap">
+        <img src="./assets/img/logo.png" alt="Lagoona">
+        <p>Брендбук Lagoona · версия 1.0 · сайт: <a href="./index.html">index.html</a></p>
+    </div>
+</footer>
+
+</body>
+</html>

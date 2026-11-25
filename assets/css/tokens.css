@@ -1,0 +1,33 @@
+/* ==========================================================================
+   Lagoona — дизайн-токены (см. brandbook.html)
+   Подключается раньше main.css и brandbook.css.
+   ========================================================================== */
+
+:root{
+    /* Цвет */
+    --sun:      #EDB64A;   /* Солнце — цвет логотипа. Текст на нём: только Глубина (8.8:1) */
+    --lagoon:   #0B7A82;   /* Лагуна — крупные поля. Текст на ней: только белый (5.1:1) */
+    --deep:     #0B2237;   /* Глубина — текст, шапка, контуры */
+    --foam:     #F4FBFA;   /* Пена — фон страницы */
+    --white:    #FFFFFF;
+    --muted:    #4C6272;   /* второстепенный текст на Пене (6.1:1) */
+    --sun-ink:  #8A5A0B;   /* Солнце как цвет текста на светлом (5.6:1) */
+    --line:     #CFE0DE;   /* тонкие линии на светлом */
+    --line-d:   rgba(255, 255, 255, .22);
+
+    /* Форма */
+    --arch:     999px 999px 20px 20px;   /* арка — «окно на восход» */
+    --r-card:   20px;
+    --r-pill:   999px;
+    --stroke:   2px;                     /* контур — всегда 2px */
+
+    /* Шрифты */
+    --display:  'Unbounded', 'Onest', 'Segoe UI', Arial, sans-serif;
+    --text:     'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+
+    /* Движение */
+    --ease:     cubic-bezier(.23, 1, .32, 1);   /* сильный ease-out */
+
+    /* Стрелки (рисуются, не печатаются символом) */
+    --arrow-deep: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%230B2237' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8h10M9 4l4 4-4 4'/%3E%3C/svg%3E");
+}
