@@ -248,7 +248,7 @@ code{ font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-siz
 }
 .bb-sw b{ font-family: var(--display); font-size: 22px; font-weight: 600; letter-spacing: -.02em; }
 .bb-sw code{ font-size: 15px; font-weight: 600; }
-.bb-sw small{ font-size: 13px; opacity: .85; }
+.bb-sw small{ font-size: 13px; }
 .bb-sw span{ margin-top: 10px; font-size: 14px; max-width: 34ch; }
 .bb-sw--sun{ background: var(--sun); }
 .bb-sw--lagoon{ background: var(--lagoon); color: var(--white); }
@@ -281,7 +281,7 @@ code{ font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-siz
     font-weight: 500;
 }
 .bb-pairs b{ font-family: var(--display); font-size: 20px; }
-.bb-pairs em{ margin-left: auto; font-style: normal; font-size: 13px; font-weight: 600; opacity: .9; }
+.bb-pairs em{ margin-left: auto; font-style: normal; font-size: 13px; font-weight: 600; }
 
 /* Шрифты */
 .bb-specimen{ display: grid; gap: 28px; margin-bottom: 36px; }
